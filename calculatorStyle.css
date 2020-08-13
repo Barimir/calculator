@@ -1,0 +1,66 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Baloo Tamma 2";
+  font-weight: normal;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: salmon;
+}
+
+.calculator-grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh; /*fill 100% of the height all the time*/
+  grid-template-columns: repeat(4, 100px); /*4 columns, 100px wide */
+  grid-template-rows: minmax(100px, auto) repeat(5, 100px); /*rows will grow if needed (for result column)*/
+}
+
+.calculator-grid > button {
+  /*selects all the buttons in the grid*/
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.calculator-grid > button:hover {
+  /* hover effect for buttons */
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.span-two {
+  /*make the span buttons span two columns*/
+  grid-column: span 2;
+}
+
+.output {
+  /* output section */
+  grid-column: 1 / -1; /* will make it span the entire width of the grid*/
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column; /*lineup elements in the output vertically*/
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all; /* if the number became too long, it will go to the next line*/
+  border-style: solid;
+}
+
+.output .previous-operand {
+  /* top number in the output box*/
+  color: rgb(255, 255, 255, 0.65);
+  font-size: 1.5rem;
+}
+
+.output .current-operand {
+  /* top number in the output box*/
+  color: white;
+  font-size: 2.5rem;
+}
